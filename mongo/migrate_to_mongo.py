@@ -1,9 +1,13 @@
 import pandas as pd
 from pymongo import MongoClient
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Connexion MongoDB
-uri = "mongodb://MiroslavOCR:Miroslav123@host.docker.internal:27017/"
+uri = f"mongodb://{os.getenv('MONGO_USER')}:{os.getenv('MONGO_PASS')}@host.docker.internal:27017/"
 client = MongoClient(uri)
 
 # Base et collection

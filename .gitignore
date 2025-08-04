@@ -1,0 +1,13 @@
+# Données sensibles (dataset complet)
+data/*.csv
+
+# Fichiers temporaires Python
+__pycache__/
+*.pyc
+
+# Fichiers secrets ou variables si jamais tu en ajoutes plus tard
+.env
+
+# Fichiers spécifiques à l’OS
+.DS_Store
+Thumbs.db

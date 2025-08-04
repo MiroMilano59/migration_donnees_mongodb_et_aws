@@ -2,7 +2,6 @@ services:
   mongodb:
     image: mongo:6.0
     container_name: mongodb_container
-    restart: always
     ports:
       - "27017:27017"
     environment:
@@ -11,6 +10,15 @@ services:
     volumes:
       - mongodb_data:/data/db
       - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  migrator:
+    build:
+      context: .
+      dockerfile: mongo/Dockerfile
+    depends_on:
+      - mongodb
+    volumes:
+      - ./data:/app/data
 
 volumes:
   mongodb_data:
